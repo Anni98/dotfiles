@@ -20,12 +20,14 @@ echo ""
 mkdir ~/gits
 git clone https://aur.archlinux.org/yay.git ~/gits/
 cd ~/gits/yay/
-makepkg -si
+makepkg -si --noconfirm
 echo "Yay Installed"
 echo ""
 clear
+echo "Updating the System"
+sudo pacman -Syyu --noconfirm
 echo "Installing Programs"
-pacman -S alacritty xorg xorg-server xorg-xinit mesa xdg-utils xf86-input-libinput xf86-video-amdgpu xf86-video-ati xf86-video-nouveau xf86-video-vesa ranger python rofi nvim feh htop 
+pacman -S --needed alacritty xorg xorg-server xorg-xinit mesa xdg-utils xf86-input-libinput xf86-video-amdgpu xf86-video-ati xf86-video-nouveau xf86-video-vesa ranger python rofi nvim feh htop 
 echo ""
 echo "Installing DWM & Setup"
 git clone https://aur.archlinux.org/dwm.git ~/
