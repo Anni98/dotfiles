@@ -13,7 +13,7 @@ echo "      https://github.com/Anni98    "
 echo ""
 echo "Installing Programs.."
 echo "Installing Yay"
-sleep 1 && clear
+sleep 1 && tput clear
 echo "Installing Kit"
 sudo pacman -S --needed base-devel git
 echo ""
@@ -25,18 +25,22 @@ echo "Yay Installed"
 echo ""
 clear
 echo "Installing Programs"
-pacman -S alacritty xorg xorg-server xorg-xinit mesa xdg-utils xf86-input-libinput xf86-video-amdgpu xf86-video-ati xf86-video-nouveau xf86-video-vesa ranger python rofi nvim
+pacman -S alacritty xorg xorg-server xorg-xinit mesa xdg-utils xf86-input-libinput xf86-video-amdgpu xf86-video-ati xf86-video-nouveau xf86-video-vesa ranger python rofi nvim feh htop 
 echo ""
 echo "Installing DWM & Setup"
 git clone https://aur.archlinux.org/dwm.git ~/
 cd dwm 
-sudo make clean install
-echo "Dwm installed configutring it"
+if sudo make clean install; then
+  echo "Dwm installed configutring it"
+else
+  echo "Dwm installation failed!"
+fi
 mkdir patches
 cd patches
 if wget -O dwm-fullgaps-6.4.diff https://dwm.suckless.org/patches/fullgaps/dwm-fullgaps-6.4.diff; then
   echo "Patch Download Successfull"
 fi
+cd ~/dwm/
 if patch -p1 < ~/dwm/patches/dwm-fullgaps-6.4.diff; then
   echo "Patch Applied Successfully"
 fi
@@ -69,7 +73,7 @@ fi
 echo "Working on xinitrc"
 cd
 if cp ~/dotfiles/.xinitrc ~/ ; then
-  echo"All Set,Your System is Ready Now"
+  echo "All Set,Your System is Ready Now"
 fi
-echo"Made By AnniX"
+echo "Made By AnniX"
 
