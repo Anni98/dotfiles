@@ -31,7 +31,7 @@ pacman -S --needed alacritty xorg xorg-server xorg-xinit mesa xdg-utils xf86-inp
 echo ""
 echo "Installing DWM & Setup"
 git clone https://aur.archlinux.org/dwm.git ~/
-cd dwm 
+cd ~/dwm
 if sudo make clean install; then
   echo "Dwm installed configutring it"
 else
